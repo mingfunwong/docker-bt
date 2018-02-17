@@ -12,6 +12,8 @@ if [ -f "/etc/init.d/pure-ftpd" ];then
     /etc/init.d/pure-ftpd start
 fi
 if [ -f "/etc/init.d/mysqld" ];then
+    chown -R mysql:mysql /www/server/data
+    chown -R mysql:mysql /www/server/mysql
     /etc/init.d/mysqld start
 fi
 if [ -f "/etc/init.d/php-fpm-52" ];then
