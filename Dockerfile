@@ -8,7 +8,6 @@ ENV MYSQL_VERSION 5.7
 ENV PUREFTPD_VERSION 1.0.47
 ENV PHP_VERSION 5.6
 ENV PHPMYADMIN_VERSION 4.7
-ENV OPCACHE_VERSION 56
 ENV INSTALL_MODE 1
 
 COPY ./start.sh /start.sh
@@ -23,13 +22,12 @@ RUN yum install -y wget \
  && echo '/www' > /var/bt_setupPath.conf \
  && cd /www/server/panel/install \
  && /bin/bash install_soft.sh $INSTALL_MODE install apache $APACHE_VERSION \
- && /bin/bash install_soft.sh 1 install mysql $MYSQL_VERSION \
+ && /bin/bash install_soft.sh $INSTALL_MODE install mysql $MYSQL_VERSION \
  && /bin/bash install_soft.sh $INSTALL_MODE install pure-ftpd $PUREFTPD_VERSION \
  && /bin/bash install_soft.sh $INSTALL_MODE install php $PHP_VERSION \
  && wget -O phpmyadmin.sh http://download.bt.cn/install/$INSTALL_MODE/phpmyadmin.sh  \
  && sed -i 's/firewall-cmd/echo firewall-cmd/' ./phpmyadmin.sh \
  && bash phpmyadmin.sh install $PHPMYADMIN_VERSION \
- && /bin/bash install_soft.sh $INSTALL_MODE install opcache $OPCACHE_VERSION \
  && sed -i 's/# ForcePassiveIP                192.168.0.1/ForcePassiveIP                0.0.0.0/' /www/server/pure-ftpd/etc/pure-ftpd.conf \
  && sed -i 's/PassivePortRange          39000 40000/PassivePortRange          39000 39050/' /www/server/pure-ftpd/etc/pure-ftpd.conf \
  && /etc/init.d/bt stop \
