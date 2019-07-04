@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  bt:
+    image: mingfunwong/bt:lamp5.6
+    restart: always
+    ports:
+      - "21:21"
+      - "80:80"
+      - "443:443"
+      - "888:888"
+      - "3306:3306"
+      - "8888:8888"
+      - "39000-39050:39000-39050"
+    volumes:
+      - ~/www:/www/wwwroot
+      - bt-mysql:/www/server/data
+      - bt-panel:/www/server/panel/data
+      - bt-vhost:/www/server/panel/vhost
+      - bt-ftp:/www/server/pure-ftpd/etc
