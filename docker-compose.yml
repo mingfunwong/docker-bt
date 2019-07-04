@@ -13,7 +13,7 @@ services:
       - "8888:8888"
       - "39000-39050:39000-39050"
     volumes:
-      - ~/www:/www/wwwroot
+      - ./www:/www/wwwroot
       - bt-mysql:/www/server/data
       - bt-panel:/www/server/panel/data
       - bt-vhost:/www/server/panel/vhost
