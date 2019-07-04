@@ -23,6 +23,10 @@ docker run -p 21:21 \
 ## PHP 运行环境
 已为您编译好 Apache 2.4 + PHP 5.6 + MySQL 4.7 + Pure-Ftpd 1.0.47 + phpMyAdmin 4.7。请使用以下命令：
 ```
+docker-compose up -d
+```
+或者
+```
 docker run -p 21:21 \
            -p 80:80 \
            -p 443:443 \
@@ -33,3 +37,4 @@ docker run -p 21:21 \
            -d --name bt \
            mingfunwong/bt:lamp5.6
 ```
+
