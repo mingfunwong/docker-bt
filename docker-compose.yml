@@ -18,3 +18,9 @@ services:
       - bt-panel:/www/server/panel/data
       - bt-vhost:/www/server/panel/vhost
       - bt-ftp:/www/server/pure-ftpd/etc
+
+volumes:
+  bt-mysql:
+  bt-panel:
+  bt-vhost:
+  bt-ftp:
